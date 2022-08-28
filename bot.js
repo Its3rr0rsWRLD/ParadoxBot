@@ -879,13 +879,6 @@ s4d.client.on('message', async (s4dmessage) => {
             });
             // Update the github repository https://github.com/ThatError404/Paradox-Bot/
             var exec = require('child_process').exec;
-            exec('git pull', (error, stdout, stderr) => {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(stdout);
-                }
-            });
             await delay(5000);
             var embed = new Discord.MessageEmbed()
             embed.setColor('#b3315b');
@@ -894,9 +887,12 @@ s4d.client.on('message', async (s4dmessage) => {
             (s4dmessage.channel).send({
                 embeds: [embed],
             });
+            await delay(5000);
+            exit();
         }
     }
 });
+// #endregion
 
     return s4d;
     })();
