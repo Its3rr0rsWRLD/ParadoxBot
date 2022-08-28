@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { exit } = require("process");
-const token = process.env.DISCORD_TOKEN;
+const bottoken = process.env.DISCORD_TOKEN;
 
 (async () => {
     let process = require('process');
@@ -50,7 +50,7 @@ s4d.client = new s4d.Discord.Client({
     partials: ["REACTION"]
 });
 
-await s4d.client.login().catch((e) => { s4d.tokenInvalid = true; s4d.tokenError = e; });
+await s4d.client.login(`${bottoken}`).catch((e) => { s4d.tokenInvalid = true; s4d.tokenError = e; });
 
 if (s4d.tokenInvalid) {
     console.error("Your a idiot, you can't use this bot without a valid token :|");
