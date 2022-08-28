@@ -894,5 +894,24 @@ s4d.client.on('message', async (s4dmessage) => {
 });
 // #endregion
 
+// #region Git Update Alert
+setInterval(async () => {
+    const fetch = require('node-fetch');
+    var repo = await fetch('https://api.github.com/repos/ThatError404/ParadoxBot').then(res => res.json());
+    var last_update = fs.readFileSync('.gitupdate', 'utf8');
+    if (last_update != repo.updated_at) {
+        fs.writeFileSync('.gitupdate', repo.updated_at);
+        var embed = new Discord.MessageEmbed()
+        embed.setColor('#b3315b');
+        embed.setTitle('Github Repository Updated');
+        embed.setDescription('The Github repository has been updated.');
+        (s4d.client.channels.cache.get("1012956599440113672")).send({
+            embeds: [embed],
+        });
+    }
+} , 5000);
+
+// #endregion
+
     return s4d;
     })();
