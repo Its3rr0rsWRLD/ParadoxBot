@@ -823,7 +823,9 @@ s4d.client.on('message', async (s4dmessage) => {
                 embeds: [embed],
             });
             await delay(5000);
-            exit();
+            s4d.client.user.setActivity('for commands.', {
+                type: 'WATCHING'
+            });
         }
     }
 });
