@@ -34,7 +34,7 @@
 
 First, download the template from <a href="https://github.com/ThatError404/ParadoxBot/releases/tag/Template-v0.5">here</a>, then unzip it. Now, use `npm install` to install all the dependencies.
 
-Don't forget to add your bot's token to <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a>. There are 2 ways you can do this: either by adding a file called `.env` to the root of the project and adding the token in there (Ex. `TOKEN=<your token>`), or by adding the token to the bot.js file on <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a>
+Don't forget to add your bot's token to <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a>. There are 2 ways you can do this: either by adding a file called `.env` to the root of the project and adding the token in there (Ex. `TOKEN=<your token>`), or by adding the token to the bot.js file on <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a>.
 
 Ex. `await s4d.client.login("TOKEN").catch((e) => { s4d.tokenInvalid = true; s4d.tokenError = e; });`
 
