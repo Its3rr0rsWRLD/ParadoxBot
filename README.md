@@ -23,8 +23,21 @@
 <h3><b>xp</b> - Shows the xp of the specified user.</h3>
 <h3><b>meme</b> - Shows 1 random meme.</h3>
 <h3><b>memes</b> (1-5) - Shows the specified amount of memes.</h3>
+
+---
 <h2 align="center"><b>But why should I use Paradox?</b></h2>
 <h3>Idk, it's free though :)</h3>
 
 ------
 <h1 align="center"><b>Use this for yourself</b></h3>
+<p align="center"><b>Your gonna need node.js btw</b></p>
+
+First, download the template from <a href="https://github.com/ThatError404/ParadoxBot/releases/tag/Template-v0.5">here</a>, then unzip it. Now, use `npm install` to install all the dependencies.
+
+Don't forget to add your bot's token to <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a>. There are 2 ways you can do this: either by adding a file called `.env` to the root of the project and adding the token in there (Ex. `TOKEN=<your token>`), or by adding the token to the bot.js file on <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a> (Ex. `await s4d.client.login("TOKEN").catch((e) => { s4d.tokenInvalid = true; s4d.tokenError = e; });`).
+
+---
+
+<a href="https://nodejs.org/en/"><b>Node:</b></a> To start the bot, use `npm start` 
+
+<a href="https://bun.sh/"><b>Bun:</b></a> which i highly recommend when hosting a bot that uses slash commands, use `bun start`
