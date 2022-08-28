@@ -150,10 +150,12 @@ s4d.client.on("message", async(message) => {
 
 // #region Joining/Making Neccecary Files
 s4d.client.on("guildCreate", async(guild) => {
-    fs.mkdirSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}Config/${guild.id}/`);
-    fs.writeFileSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}Config/${guild.id}/prefix.json`, "!");
-    fs.writeFileSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}Config/${guild.id}/rank.txt`, "");
-    fs.writeFileSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}Config/${guild.id}/rankchan.txt`, "");
+    if (!fs.existsSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}/Config/${guild.id}`)) {
+        fs.mkdirSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}Config/${guild.id}/`);
+    }
+    if (!fs.existsSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}/Config/${guild.id}/prefix.json`)) {
+        fs.writeFileSync(`${devMode ? S4D_NATIVE_GET_PATH : "."}Config/${guild.id}/prefix.json`, "-");
+    }
 });
 // #endregion
     
@@ -736,73 +738,6 @@ s4d.client.on('message', async (s4dmessage) => {
 });
 // #endregion
 
-// #region Rank System
-s4d.client.on('messageCreate', async (s4dmessage) => {
-    if (!((s4dmessage.author).bot)) {
-        const num = Math.floor(Math.random() * 5) + 1;
-        const prefix = JSON.parse(fs.readFileSync('Config/' + servid + '/prefix.json', 'utf8'));
-        member_xp = s4d.database.get(String(('xp-' + String(s4dmessage.member.id))));
-        member_level = s4d.database.get(String(('level-' + String(s4dmessage.member.id))));
-        if (!member_xp) {
-            member_xp = 0;
-        } else if (!member_level) {
-            member_level = 0;
-        }
-        s4d.database.set(String(('xp-' + String(s4dmessage.member.id))), (member_xp + num));
-        member_xp = member_xp + num;
-        if (member_xp > 100) {
-            s4d.database.set(String(('xp-' + String(s4dmessage.member.id))), 0);
-            s4d.database.set(String(('level-' + String(s4dmessage.member.id))), (member_level + 1));
-            member_level = member_level + 1;
-            var embed = new Discord.MessageEmbed()
-            embed.setColor('#b3315b');
-            embed.setTitle('Level Up!');
-            embed.setDescription('Congrats ' + s4dmessage.author + '! You have leveled up to level ' + member_level + '!');
-            // Send the message to the channel with the id "1013183789255639103"
-            (s4d.client.channels.cache.get("1013183789255639103")).send({
-                embeds: [embed]
-            });
-        }
-        if ((s4dmessage.content) == prefix + 'level') {
-            var embed = new Discord.MessageEmbed()
-            embed.setColor('#b3315b');
-            embed.setTitle('Your Level: ' + member_level);
-            embed.setDescription('You are currently level ' + member_level + ' with ' + member_xp + ' xp.');
-            (s4dmessage.channel).send({
-                embeds: [embed]
-            });
-        } else if ((s4dmessage.content) == prefix + 'xp') {
-            var embed = new Discord.MessageEmbed()
-            embed.setColor('#b3315b');
-            embed.setTitle('Your XP: ' + member_xp);
-            embed.setDescription('You are currently level ' + member_level + ' with ' + member_xp + ' xp.');
-            (s4dmessage.channel).send({
-                embeds: [embed]
-            });
-        } else if ((s4dmessage.content.includes(prefix + 'level')) && (s4dmessage.content.includes(mentions.users.first()))) {
-            var embed = new Discord.MessageEmbed()
-            var user = s4dmessage.mentions.users.first();
-            embed.setColor('#b3315b');
-            embed.setTitle(user + '\'s Level: ' + member_level);
-            embed.setDescription(user + ' is currently level ' + member_level + ' with ' + member_xp + ' xp.');
-            (s4dmessage.channel).send({
-                embeds: [embed]
-            });
-        } else if ((s4dmessage.content.includes(prefix + 'xp')) && (s4dmessage.content.includes(mentions.users.first()))) {
-            var embed = new Discord.MessageEmbed()
-            var user = s4dmessage.mentions.users.first();
-            embed.setColor('#b3315b');
-            embed.setTitle(user + '\'s XP: ' + member_xp);
-            embed.setDescription(user + ' is currently level ' + member_level + ' with ' + member_xp + ' xp.');
-            (s4dmessage.channel).send({
-                embeds: [embed]
-            });
-        }
-    }
-
-});
-// #endregion
-
 // #region Meme Command
 s4d.client.on('message', async (s4dmessage) => {
     const prefix = JSON.parse(fs.readFileSync('Config/' + servid + '/prefix.json', 'utf8'));
@@ -892,41 +827,6 @@ s4d.client.on('message', async (s4dmessage) => {
         }
     }
 });
-// #endregion
-
-// #region Git Update Alert
-// Every 30 seconds, check if there is an update at the repository https://github.com/ThatError404/ParadoxBot and use the personal key from .env called "GITKEY"
-setInterval(function() {
-    var request = require('request');
-    var last_update = fs.readFileSync('git.update', 'utf8');
-    request({
-        url: 'https://api.github.com/repos/ThatError404/Paradox-Bot/commits',
-        headers: {
-            'User-Agent': 'Paradox Bot',
-            'Authorization': 'token ' + process.env.GITKEY
-        }
-    }, function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var body = JSON.parse(body);
-            var latest = body[0].sha;
-            if (latest != last_update) {
-                fs.writeFileSync('git.update', latest);
-                var embed = new Discord.MessageEmbed()
-                embed.setColor('#b3315b');
-                embed.setTitle('Update Available!');
-                embed.setDescription('The Github repository has been updated!\n\nRepository: https://github.com/ThatError404/Paradox-Bot/');
-                (s4d.client.channels.cache.get("1012956599440113672")).send({
-                    embeds: [embed],
-                });
-            }
-        } else {
-            console.log(error);
-        }
-    }).on('error', function(err) {
-        console.log(err);
-    });
-} , 30000);
-
 // #endregion
 
     return s4d;
