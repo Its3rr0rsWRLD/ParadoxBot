@@ -895,21 +895,37 @@ s4d.client.on('message', async (s4dmessage) => {
 // #endregion
 
 // #region Git Update Alert
-setInterval(async () => {
-    const fetch = require('node-fetch');
-    var repo = await fetch('https://api.github.com/repos/ThatError404/ParadoxBot').then(res => res.json());
-    var last_update = fs.readFileSync('.gitupdate', 'utf8');
-    if (last_update != repo.updated_at) {
-        fs.writeFileSync('.gitupdate', repo.updated_at);
-        var embed = new Discord.MessageEmbed()
-        embed.setColor('#b3315b');
-        embed.setTitle('Github Repository Updated');
-        embed.setDescription('The Github repository has been updated.');
-        (s4d.client.channels.cache.get("1012956599440113672")).send({
-            embeds: [embed],
-        });
-    }
-} , 5000);
+// Every 30 seconds, check if there is an update at the repository https://github.com/ThatError404/ParadoxBot and use the personal key from .env called "GITKEY"
+setInterval(function() {
+    var request = require('request');
+    var last_update = fs.readFileSync('git.update', 'utf8');
+    request({
+        url: 'https://api.github.com/repos/ThatError404/Paradox-Bot/commits',
+        headers: {
+            'User-Agent': 'Paradox Bot',
+            'Authorization': 'token ' + process.env.GITKEY
+        }
+    }, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var body = JSON.parse(body);
+            var latest = body[0].sha;
+            if (latest != last_update) {
+                fs.writeFileSync('git.update', latest);
+                var embed = new Discord.MessageEmbed()
+                embed.setColor('#b3315b');
+                embed.setTitle('Update Available!');
+                embed.setDescription('The Github repository has been updated!\n\nRepository: https://github.com/ThatError404/Paradox-Bot/');
+                (s4d.client.channels.cache.get("1012956599440113672")).send({
+                    embeds: [embed],
+                });
+            }
+        } else {
+            console.log(error);
+        }
+    }).on('error', function(err) {
+        console.log(err);
+    });
+} , 30000);
 
 // #endregion
 
