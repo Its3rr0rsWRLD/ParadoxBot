@@ -1,6 +1,8 @@
 <img src="https://github.com/ThatError404/ParadoxBot/blob/main/image.png?raw=true"></img>
 <h1 align="center"><b><a href="https://discord.com/oauth2/authorize?client_id=1012959415768457238&permissions=8&scope=bot%20applications.commands">Paradox</a></b></h1>
 
+<h2 align="center">Wanna use this bot as a template for your bot? Skip to <a href="https://github.com/ThatError404/ParadoxBot/edit/main/README.md#use-this-for-yourself">here</a>.</h2>
+
 <h3 align="center"><b>Paradox is an Open Source Discord bot that can do anything from <a href="https://github.com/ThatError404/ParadoxBot/new/main#backup">backing up entire servers</a> to <a href="https://github.com/ThatError404/ParadoxBot/new/main#economy">managing an entire economy</a> and is constantly being updated.</b></h3>
 
 <h2 align="center"><b>Ok, but what <i>all</i> can it do?</b></h2>
@@ -21,3 +23,5 @@
 <h3><b>xp</b> - Shows the xp of the specified user.</h3>
 <h3><b>meme</b> - Shows 1 random meme.</h3>
 <h3><b>memes</b> (1-5) - Shows the specified amount of memes.</h3>
+
+<h1 align="center"><b>Use this for yourself</b></h3>
