@@ -3,10 +3,7 @@
 
 <h3 align="center"><b>Paradox is an Open Source Discord bot that can do anything from <a href="https://github.com/ThatError404/ParadoxBot/new/main#backup">backing up entire servers</a> to <a href="https://github.com/ThatError404/ParadoxBot/new/main#economy">managing an entire economy</a> and is constantly being updated.</b></h3>
 
----
-
 <h2 align="center"><b>Ok, but what <i>all</i> can it do?</b></h2>
-
 <h3><b>help (command)</b> - Shows a help message for that specific command.</b></h3>
 <h3><b>ping</b> - Pings the bot.</h3>
 <h3><b>serverinfo</b> - Shows information about the server.</h3>
