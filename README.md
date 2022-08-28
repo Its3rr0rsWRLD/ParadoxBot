@@ -40,6 +40,6 @@ Ex. `await s4d.client.login("TOKEN").catch((e) => { s4d.tokenInvalid = true; s4d
 
 ---
 
-<a href="https://nodejs.org/en/"><b>Node:</b></a> To start the bot, use `npm start` 
+<a href="https://nodejs.org/en/"><b>Node:</b></a> Use `npm start` 
 
-<a href="https://bun.sh/"><b>Bun:</b></a> which i highly recommend when hosting a bot that uses slash commands, use `bun start`
+<a href="https://bun.sh/"><b>Bun:</b></a> Use `bun start`
