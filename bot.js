@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { exit } = require("process");
-const bottoken = process.env.DISCORD_TOKEN;
+const bottoken = process.env.TOKEN;
 
 (async () => {
     let process = require('process');
