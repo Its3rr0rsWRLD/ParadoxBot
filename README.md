@@ -1,4 +1,4 @@
-<img src="https://github.com/ThatError404/ParadoxBot/blob/main/image.png?raw=true"></img>
+<img src="https://github.com/ThatError404/ParadoxBot/blob/main/image .png?raw=true"></img>
 <h1 align="center"><b><a href="https://discord.com/oauth2/authorize?client_id=1012959415768457238&permissions=8&scope=bot%20applications.commands">Paradox</a></b></h1>
 
 <h2 align="center">Wanna use this bot as a template for your bot? Skip to <a href="https://github.com/ThatError404/ParadoxBot#use-this-for-yourself">here</a>.</h2>
