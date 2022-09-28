@@ -1,45 +1,24 @@
-<img src="https://github.com/ThatError404/ParadoxBot/blob/main/image .png?raw=true"></img>
-<h1 align="center"><b><a href="https://discord.com/oauth2/authorize?client_id=1012959415768457238&permissions=8&scope=bot%20applications.commands">Paradox</a></b></h1>
+<image src="gallium-js.ico" width="100" height="100" style="display: block; margin-left: auto; margin-right: auto;">
 
-<h2 align="center">Wanna use this bot as a template for your bot? Skip to <a href="https://github.com/ThatError404/ParadoxBot#use-this-for-yourself">here</a>.</h2>
+# Why should I use Gallium JS?
+Idk. It's just tkinter but for javascript. It's not that good, but it's better than nothing, especially if you don't know html and don't want to use electron.
 
-<h3 align="center"><b>Paradox is an Open Source Discord bot that can do anything from <a href="https://github.com/ThatError404/ParadoxBot/new/main#backup">backing up entire servers</a> to <a href="https://github.com/ThatError404/ParadoxBot#bal---shows-the-balance-of-the-specified-user">managing an entire economy</a> and is constantly being updated.</b></h3>
+# Info
+***Gallium JS "converts" to python, so if you do not have python installed, it needs to be installed.***
+***Please install Gallium JS globally using npm install -g gallium-js***
 
-<h2 align="center"><b>Ok, but what <i>all</i> can it do?</b></h2>
-<h3><b>help (command)</b> - Shows a help message for that specific command.</b></h3>
-<h3><b>ping</b> - Pings the bot.</h3>
-<h3><b>serverinfo</b> - Shows information about the server.</h3>
-<h3><b>userinfo or info</b> - Shows information about a user.</h3>
-<h3><b>coinflip or flip</b> - Flips a coin.</h3>
-<h3><b>work</b> - Earns coins.</h3>
-<h3><b>clear</b> - Clears the chat. (Mod)</h3>
-<h3><b>bal</b> - Shows the balance of the specified user.</h3>
-<h3><b>prefix</b> - Changes the prefix. (Mod)</h3>
-<h3><b>kick</b> - Kicks a user. (Mod)</h3>
-<h3><b>ban</b> - Bans a user. (Mod)</h3>
-<h3><b>mute</b> - Mutes a user. (Mod)</h3>
-<h3><b>unmute</b> - Unmutes a user. (Mod)</h3>
-<h3><b>level</b> - Shows the level of the specified user.</h3>
-<h3><b>xp</b> - Shows the xp of the specified user.</h3>
-<h3><b>meme</b> - Shows 1 random meme.</h3>
-<h3><b>memes</b> (1-5) - Shows the specified amount of memes.</h3>
+# Commands
+***gallium pack <icon>*** - Pack your app into a .exe file (if on windows. If on any other OS, it will be a executable specific to your OS)
 
----
-<h2 align="center"><b>But why should I use Paradox?</b></h2>
-<h3>Idk, it's free though :)</h3>
+# Functions
+```js
+const app = require('gallium-js');
 
-------
-<h1 align="center"><b>Use this for yourself</b></h3>
-<p align="center"><b>Your gonna need node.js btw</b></p>
+app.init(500, 300, 'Example'); // Initialize the app with the width, height, and title
 
-First, download the template from <a href="https://github.com/ThatError404/ParadoxBot/releases/tag/Template-v0.5">here</a>, then unzip it. Now, use `npm install` to install all the dependencies.
+app.resizable(false, false); // Make the app resizable or not
 
-Don't forget to add your bot's token to <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a>. There are 2 ways you can do this: either by adding a file called `.env` to the root of the project and adding the token in there (Ex. `TOKEN=<your token>`), or by adding the token to the bot.js file on <a href="https://github.com/ThatError404/ParadoxBot/blob/main/bot.js#L53">line 53</a>.
+app.button('Close App', 10, 10, 100, 50, "exit"); // Create a button with the text, x, y, width, height, and function (Function still in development, only exit works)
 
-Ex. `await s4d.client.login("TOKEN").catch((e) => { s4d.tokenInvalid = true; s4d.tokenError = e; });`
-
----
-
-<a href="https://nodejs.org/en/"><b>Node:</b></a> Use `npm start` 
-
-<a href="https://bun.sh/"><b>Bun:</b></a> Use `bun start`
+app.loop(); // Loop the app, like mainloop in python tkinter
+```
